@@ -22,7 +22,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
 
 // bootstrap
 import { AppComponent } from './containers/app/app.component';
-import { CustomSerializer, reducers } from './store/reducers/index';
+import { CustomSerializer, reducers, effects } from './store';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 
 // routes
@@ -40,7 +40,7 @@ export const ROUTES: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
     environment.development ? StoreDevtoolsModule.instrument() : [],
   ],
